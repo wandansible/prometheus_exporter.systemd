@@ -1,0 +1,18 @@
+---
+systemd_exporter_github_org: prometheus-community
+systemd_exporter_port: 9558
+systemd_exporter_listen_addresses:
+  - "localhost:{{ systemd_exporter_port }}"
+systemd_exporter_enabled_collectors: []
+systemd_exporter_disabled_collectors: []
+systemd_exporter_include_units: ""
+systemd_exporter_exclude_units: ""
+# TODO or bool
+systemd_exporter_private_connection: ""
+# TODO or bool
+systemd_exporter_user_instance: ""
+systemd_exporter_flags: "{{ lookup('template', 'flags') }}"
+systemd_exporter_extra_flags: {}
+systemd_exporter_log_level: warn
+systemd_exporter_log_format: logfmt
+systemd_exporter_telemetry_path: /metrics

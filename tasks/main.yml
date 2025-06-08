@@ -1,0 +1,4 @@
+---
+- name: Apply base prometheus exporter role
+  ansible.builtin.import_role:
+    name: wandansible.prometheus_exporter

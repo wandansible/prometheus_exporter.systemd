@@ -1,0 +1,40 @@
+#jinja2: trim_blocks: "false", lstrip_blocks: "true"
+{% for collector in systemd_exporter_enabled_collectors %}
+--systemd.collector.enable-{{ collector }}
+{% endfor %}
+{% for collector in systemd_exporter_disabled_collectors %}
+--no-systemd.collector.enable-{{ collector }}
+{% endfor %}
+{% if systemd_exporter_include_units != "" %}
+--systemd.collector.unit-include="{{ systemd_exporter_include_units }}"
+{% endif %}
+{% if systemd_exporter_exclude_units != "" %}
+--systemd.collector.unit-exclude="{{ systemd_exporter_exclude_units }}"
+{% endif %}
+{% if systemd_exporter_private_connection != "" %}
+  {% if systemd_exporter_private_connection | bool %}
+--systemd.collector.private
+  {% else %}
+--no-systemd.collector.private
+  {% endif %}
+{% endif %}
+{% if systemd_exporter_user_instance != "" %}
+  {% if systemd_exporter_user_instance | bool %}
+--systemd.collector.user
+  {% else %}
+--no-systemd.collector.user
+  {% endif %}
+{% endif %}
+{% for k, v in systemd_exporter_extra_flags | dictsort %}
+  {% if v == "" %}
+--{{ k }}
+  {% else %}
+--{{ k }}="{{ v }}"
+  {% endif %}
+{% endfor %}
+--log.level="{{ systemd_exporter_log_level }}"
+--log.format="{{ systemd_exporter_log_format }}"
+--web.telemetry-path="{{ systemd_exporter_telemetry_path }}"
+{% for systemd_exporter_listen_address in systemd_exporter_listen_addresses %}
+--web.listen-address="{{ systemd_exporter_listen_address }}"
+{% endfor %}
