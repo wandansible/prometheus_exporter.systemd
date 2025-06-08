@@ -1,0 +1,3 @@
+---
+- name: wandansible.prometheus_exporter
+  src: https://github.com/wandansible/prometheus_exporter

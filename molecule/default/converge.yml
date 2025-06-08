@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include wandansible.prometheus_exporter.systemd"
+      ansible.builtin.include_role:
+        name: "wandansible.prometheus_exporter.systemd"

@@ -1,0 +1,221 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure Systemd Exporter for Prometheus
+    options:
+      systemd_exporter_extra_flags:
+        description: Extra flags to run exporter with
+        type: dict
+
+      systemd_exporter_listen_addresses:
+        description: List of addresses and ports to listen on
+        type: list
+        elements: str
+        default: ["localhost:9558"]
+
+      systemd_exporter_log_level:
+        description: Only log messages with the given severity or above
+        type: str
+        default: warn
+        choices:
+          - debug
+          - info
+          - warn
+          - error
+
+      systemd_exporter_log_format:
+        description: Output format of log messages
+        type: str
+        default: logfmt
+        choices:
+          - logfmt
+          - json
+
+      systemd_exporter_telemetry_path:
+        description: Path under which to expose metrics
+        type: str
+        default: /metrics
+
+      systemd_exporter_enabled_collectors:
+        description: List of collectors to enable
+        type: list
+        elements: str
+        choices:
+          - restart-count
+          - ip-accounting
+          - resolved
+
+      systemd_exporter_disabled_collectors:
+        description: List of collectors to disable
+        type: list
+        elements: str
+        choices:
+          - restart-count
+          - ip-accounting
+          - resolved
+
+      systemd_exporter_include_units:
+        description: Regexp of systemd units to include
+        type: str
+
+      systemd_exporter_exclude_units:
+        description: Regexp of systemd units to exclude
+        type: str
+
+      systemd_exporter_private_connection:
+        description: |
+          If true, establish a private, direct connection to systemd without dbus.
+          Or empty string to not specify
+        type: raw
+        default: ""
+
+      systemd_exporter_user_instance:
+        description: |
+          If true, connect to the user systemd instance.
+          Or empty string to not specify
+        type: raw
+        default: ""
+
+      systemd_exporter_port:
+        description: Listen port
+        type: int
+        default: 9558
+
+      systemd_exporter_file_sd_dir:
+        description: Directory, on scrape servers, for the file service discovery target
+        type: str
+        default: /etc/prometheus/file_sd/systemd_exporter
+
+      systemd_exporter_scrape_servers:
+        description: |
+          List of servers that scrape exporter metrics from the host,
+          overrides prometheus_scrape_servers
+        type: list
+        elements: str
+
+      systemd_exporter_labels:
+        description: |
+          Labels added to exporter metrics,
+          overrides prometheus_labels
+        type: dict
+
+      systemd_exporter_install:
+        description: If true, install exporter
+        type: bool
+        default: true
+
+      systemd_exporter_configure_caddy:
+        description: If true, configure caddy to add a TLS endpoint for the exporter
+        type: bool
+        default: false
+
+      systemd_exporter_register:
+        description: If true, register the exporter with the scrape servers
+        type: bool
+        default: false
+
+      systemd_exporter_user:
+        description: Name of the exporter unix user
+        type: str
+
+      systemd_exporter_group:
+        description: Name of the exporter unix group
+        type: str
+
+      systemd_exporter_groups:
+        description: Unix groups added to exporter unix user
+        type: list
+        elements: str
+
+      systemd_exporter_manage_user:
+        description: If true, add exporter unix user and group
+        type: bool
+        default: true
+
+      systemd_exporter_bin_dir:
+        description: Directory for the exporter executable
+        type: str
+
+      systemd_exporter_src_dir:
+        description: Directory for the downloaded exporter src archive
+        type: str
+
+      systemd_exporter_strip_components:
+        description: Strip NUMBER leading components from file names on extraction
+        type: int
+        default: 1
+
+      systemd_exporter_clean_src_dir:
+        description: Remove old downloaded archive files from exporter src directory
+        type: bool
+        default: true
+
+      systemd_exporter_github_org:
+        description: Name of organisation for exporter github repository
+        type: str
+        default: prometheus
+
+      systemd_exporter_github_repo:
+        description: Name of exporter github repository
+        type: str
+
+      systemd_exporter_github_checksum_filename:
+        description: Filename for the exporter package checksums file on github
+        type: str
+
+      systemd_exporter_archive_urls:
+        description: |
+          Override the list of exporter archive urls for different platforms and architectures
+        type: list
+        elements: str
+
+      systemd_exporter_version:
+        description: Version to install (use "latest" for the latest version)
+        type: str
+        default: latest
+
+      systemd_exporter_arch_map:
+        description: |
+          Mapping of the possible values of ansible_architecture
+          to the exporter package architectures
+        type: dict
+
+      systemd_exporter_binary:
+        description: Filename for the exporter executable
+        type: str
+
+      systemd_exporter_checksum_url:
+        description: Override the URL for the exporter checksum file
+        type: str
+
+      systemd_exporter_checksum_type:
+        description: The exporter package checksum type
+        type: str
+
+      systemd_exporter_checksums:
+        description: Override exporter archive checksums file contents
+        type: str
+
+      systemd_exporter_service:
+        description: Name of the exporter systemd service
+        type: str
+
+      systemd_exporter_service_unit_file:
+        description: Contents of the systemd unit file for the exporter
+        type: str
+
+      systemd_exporter_handler:
+        description: Name of the exporter handler to notify
+        type: str
+
+      systemd_exporter_description:
+        description: Description for the exporter systemd service
+        type: str
+
+      systemd_exporter_flags:
+        description: List of flags to run exporter with, as string or list
+        type: raw
+
+      systemd_exporter_target:
+        description: Scrape target hostname and port
+        type: str
