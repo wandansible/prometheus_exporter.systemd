@@ -5,3 +5,5 @@
     - name: "Include wandansible.prometheus_exporter.systemd"
       ansible.builtin.include_role:
         name: "wandansible.prometheus_exporter.systemd"
+      vars:
+        systemd_exporter_github_token: "{{ lookup('env', 'GITHUB_TOKEN') }}"
