@@ -159,6 +159,11 @@ argument_specs:
         description: Name of exporter github repository
         type: str
 
+      systemd_exporter_github_token:
+        description: Optional bearer token to use to authenticate with api.github.com
+        type: str
+        default: ""
+
       systemd_exporter_github_checksum_filename:
         description: Filename for the exporter package checksums file on github
         type: str
