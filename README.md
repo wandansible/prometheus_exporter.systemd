@@ -17,8 +17,8 @@ ENTRY POINT: *main* - Install and configure Systemd Exporter for Prometheus
 Options (= indicates it is required):
 
 - systemd_exporter_arch_map  Mapping of the possible values of
-                              ansible_architecture to the exporter
-                              package architectures
+                              ansible_facts.architecture to the
+                              exporter package architectures
           default: null
           type: dict
 
