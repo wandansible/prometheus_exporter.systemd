@@ -168,6 +168,11 @@ argument_specs:
         description: Filename for the exporter package checksums file on github
         type: str
 
+      systemd_exporter_archive_extension:
+        description: File extension for the exporter archive
+        type: str
+        default: tar.gz
+
       systemd_exporter_archive_urls:
         description: |
           Override the list of exporter archive urls for different platforms and architectures
