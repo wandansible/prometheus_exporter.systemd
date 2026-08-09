@@ -164,7 +164,7 @@ argument_specs:
         type: str
         default: ""
 
-      systemd_exporter_github_checksum_filename:
+      systemd_exporter_checksum_filename:
         description: Filename for the exporter package checksums file on github
         type: str
 
